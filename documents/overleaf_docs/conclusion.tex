@@ -1,0 +1,9 @@
+\section{Conclusion}
+The laboratory enabled us to create a complete and operational cluster with multiple instruments that permit us to operate a multi-tenancy network and working environment. The principal instruments we used are:
+\begin{itemize}
+    \item Resource quota, defined by a ResourceQuota object, provides constraints that limit aggregate resource consumption per namespace. When you create a workload management object such as a Deployment that tries to use more resources than are available, the creation of it succeeds, but the Deployment may not be able to get all of the Pods it manages to exist.
+    \item The LimitRange object can enforce constraints related to maximum and minimum resource usage, preventing a single object from monopolizing all available resources within a namespace. A LimitRange is a policy to constrain the resource allocations (limits and requests) that you can specify for each applicable object kind in a namespace.
+    \item Role Based Access Control is a method of regulating access to computer or network resources based on the roles, which represent a set of permission of individual users within your organization.
+    \item Network Policies are an application-centric construct which allow you to specify how a pod is allowed to communicate with various network entities over the network.
+\end{itemize}
+During the laboratory, we saw different models and example cases exploiting the techniques explained before, showing differences between them and how to implement them inside a Kubernetes cluster architecture. With the knowledge about these instruments, we can continue this laboratory by implementing them all together and performing correct performance and logical isolation of the tenants based on the customers' needs. All the code and images can be found in my GitHub and Docker Hub defined in the reference page.

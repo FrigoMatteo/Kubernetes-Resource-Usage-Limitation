@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+
+
+
+\definecolor{ForestGreen}{rgb}{0.13, 0.55, 0.13}
+\definecolor{Purple}{rgb}{0.67,0.00,0.80}
+\definecolor{GoldenRod}{rgb}{0.85,0.65,0.13}
+\definecolor{codeblue}{rgb}{0.4, 0.6, 0.9} % colore per parentesi, se vuoi personalizzarlo
+\definecolor{numbergreen}{rgb}{0.2, 0.6, 0.2} % verde per numeri
+\definecolor{darkgreen}{RGB}{0,100,0} % verde scuro
+
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{lightgray!20},   % colore sfondo
+    basicstyle=\ttfamily\small,            % font tipo macchina da scrivere
+    breaklines=true,                       % va a capo automaticamente
+    frame=single,                          % riquadro attorno al codice
+    showstringspaces=false,                % non mostra spazi nei testi
+    columns=fullflexible,                  % allineamento corretto testo
+    upquote=true,                          % apostrofi "diritti"
+}
+
+\lstdefinelanguage{yaml}{
+  keywords={spec, containers, name, apiVersion, kind, metadata, labels, app, replicas, selector, matchLabels, template, containers, image, ports, containerPort, resources, requests, cpu, memory, limits, namespace, max, min, default, defaultRequest, type, hard, pods, protocol, port, targetPort, nodePort, items, scopeSelector, matchExpressions, operator, scopeName, values, apiGroups, rules, verbs, apiGroup, roleRef, subjects, priorityClassName, podSelector, policyTypes, Ingress, ingress, from, podSelector,serviceAccountName, command}, % ,... all the keyword you want
+  keywordstyle=\color{blue}\bfseries,
+  moredelim=[s][\color{darkgreen}]{<}{>}, % aggiunto per parole/frasi tra < >
+  moredelim=[is][commentstyle]{||}{££}, % invisible custom delimiters
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{\#},
+  commentstyle=\color{olive}\ttfamily,
+  stringstyle=\color{orange}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinelanguage{Python}{
+  keywords={typeof, null, catch, switch, in, int, str, float, self, print},
+  keywordstyle=\color{GoldenRod}\bfseries,
+  ndkeywords={return, import, class, if, elif, endif, while, do, else, True, False, catch, def, boolean, throw, try, except},
+  ndkeywordstyle=\color{Purple}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{olive}\ttfamily,
+  stringstyle=\color{orange}\ttfamily,
+  morestring=[b]',
+  morestring=[b]",
+  literate=*%
+    {0}{{{\color{numbergreen}0}}}1
+    {1}{{{\color{numbergreen}1}}}1
+    {2}{{{\color{numbergreen}2}}}1
+    {3}{{{\color{numbergreen}3}}}1
+    {4}{{{\color{numbergreen}4}}}1
+    {5}{{{\color{numbergreen}5}}}1
+    {6}{{{\color{numbergreen}6}}}1
+    {7}{{{\color{numbergreen}7}}}1
+    {8}{{{\color{numbergreen}8}}}1
+    {9}{{{\color{numbergreen}9}}}1
+}
+
+
+
+
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,       % colore normale (nero)
+    citecolor=black,
+    filecolor=black,
+    urlcolor=black,
+    pdfusetitle,
+    linktoc=all,
+    pdfborderstyle={/S/U/W 0},   % no sottolineatura
+    pdfhighlight=/I             % evidenziazione "invertita" (giallo di default)
+}
+
+\lstset{style=mystyle}
+
+% Language setting
+\usepackage[english]{babel}
+
+% Set page size and margins
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{titlesec} % per personalizzare titoli
+\usepackage{caption}
+
+% Nessuna numerazione iniziale
+\pagenumbering{gobble}
+
+\begin{document}
+
+  \input{title} % titolo
+
+  \newpage
+  \pagestyle{plain} % nessuna intestazione, numero centrato nel piè di pagina
+
+  % Attiva numerazione pagine
+  \pagenumbering{arabic}
+
+  % Indice
+  \clearpage
+  \addcontentsline{toc}{section}{Indice}
+  \tableofcontents
+  \newpage
+
+  % Personalizzazione spaziatura dei titoli
+  \titlespacing*{\section}{0pt}{0.20in}{0.02in}
+  \titlespacing*{\subsection}{0pt}{0.10in}{0.02in}
+
+
+
+  % Contenuto
+  \input{introduction}
+  \newpage
+  \input{chapter1}
+  \newpage
+  \input{chapter2}
+  \newpage
+  \input{conclusion}
+  \newpage
+
+  % Bibliografia
+  \addcontentsline{toc}{section}{Bibliografia}
+  \bibliographystyle{unsrt}
+  \bibliography{biblio}
+
+\end{document}
