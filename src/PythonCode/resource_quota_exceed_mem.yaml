@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: quota-tenant-b
+  namespace: tenant-b
+spec:
+  hard:
+    # Minimum amount of resources they will have
+    pods: "4"
+    requests.cpu: "1"
+    requests.memory: 10Mi
+    # Maximum amount of resources they can take
+    limits.cpu: "2"
+    limits.memory: 50Mi

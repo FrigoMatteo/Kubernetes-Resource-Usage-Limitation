@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vite-deployment
+  namespace: team-a
+  labels:
+    app: vite
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vite
+  template:
+    metadata:
+      labels:
+        app: vite
+    spec:
+      containers:
+      - name: vite
+        image: matteofrigo1618/vite_application:v1.0
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "512Mi"
+          limits:
+            cpu: "10"
+            memory: "1024Mi"

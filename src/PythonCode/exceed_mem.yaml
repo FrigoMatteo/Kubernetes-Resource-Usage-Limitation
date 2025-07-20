@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exceed-mem
+  namespace: tenant-b
+  labels:
+    app: mem
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mem
+  template:
+    metadata:
+      labels:
+        app: mem
+    spec:
+      containers:
+      - name: mem
+        image: matteofrigo1618/exceed_memory:v1.2
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "8Mi"
+          limits:
+            cpu: "1"
+            memory: "50Mi"

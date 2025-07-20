@@ -1,0 +1,49 @@
+# Account docker email 2016
+#Docker build:
+docker build -t vite_app:v1.1 . (creo una repository in locale di nome vite_app:v1.1)
+docker tag vite_app:v1.1 matteofrigo1618/vite_app:v1.1 (la taggo per docker hub - qui è sbagliata la repository name)
+docker push matteofrigo1618/vite_application:v1.1 (la pusho)
+
+# Show minikube GUI interface
+cmd:minikube dashboard
+
+
+#Start minikube
+cmd : minikube start (img immagini/schermate)
+
+
+# Show services
+kubectl get services (nodePort accessible from outside, Cluster IP are used for internal communcation)
+
+#Deploy pods inside minikube:
+kubectl apply -f vite_application.yaml
+Remove:
+kubectl delete -f vite_application.yaml
+
+
+#Enter pod sh:
+kubectl exec -it vite-deployment-7c4fbcc6b9-d25px -- sh
+
+
+#Minikube stuff related to service and connection to pods
+https://minikube.sigs.k8s.io/docs/tutorials/kubernetes_101/module2/
+
+#Forward port:
+kubectl port-forward service/vite-service 3000:3000
+
+#List the minikube services
+minikube service list
+
+#To stop and clear minikube:
+minikube stop
+minikube delete --all --purge
+
+# Describe limitrange (should be equal, but "quota" instead of "limitrange" for ResourceQuota)
+kubectl describe limitrange (-n default)
+
+#Create single deployment in line
+kubectl create deployment exceed_mem --image=kicbase/echo-server:1.0
+
+#Follow logs of pod:
+kubectl logs -f exceed-mem-5569b4b778-mzmmw
+

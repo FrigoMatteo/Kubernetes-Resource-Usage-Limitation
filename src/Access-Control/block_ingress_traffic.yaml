@@ -1,0 +1,17 @@
+
+# We first need to label the torino-tenant so the ingress policy will be applied
+# $ kubectl label namespace torino-tenant name=torino-tenant
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-ingress
+  namespace: torino-tenant
+spec:
+  podSelector: {} 
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: torino-tenant

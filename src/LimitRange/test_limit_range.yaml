@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vite-deployment
+  namespace: tenant-b
+  labels:
+    app: vite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vite
+  template:
+    metadata:
+      labels:
+        app: vite
+    spec:
+      containers:
+      - name: vite
+        image: matteofrigo1618/vite_application:v1.0
+        ports:
+        - containerPort: 3000
